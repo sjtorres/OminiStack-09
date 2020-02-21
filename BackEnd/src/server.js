@@ -1,6 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const app = express();
+
+mongoose.connect('mongodb+srv://oministack:oministack@oministack9-wuril.mongodb.net/semana09?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 // GET, POST, PUT, DELETE
 // req.query = Acessar query de params (para filtros)
@@ -8,9 +15,6 @@ const app = express();
 // req.body = acessar corpo da requisição (para criar, editar)
 
 app.use(express.json());
-
-app.post('/users/', (req, res) => {
-  return res.json(req.body)
-})
+app.use(routes);
 
 app.listen(3333);
