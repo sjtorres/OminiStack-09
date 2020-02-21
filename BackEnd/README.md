@@ -1,6 +1,6 @@
-# BackEnd
+# BackEnd com NodeJS
 
-Comandos e Métodos inportantes
+Comandos e Métodos importantes
 
 ## Inicialização
 
@@ -14,4 +14,19 @@ Comandos e Métodos inportantes
 * 'POST' // criar informações
 * 'PUT' // editar informações
 * 'DELETE' // apagar informações
+
+* // req.query = Acessar query de params (para filtros)
+    'app.get('/users', (req, res) => {
+      return res.json({ idade: req.query.idade })
+    })'
+
+* // req.params = acessar route params (para add ou delete)
+    'app.put('/users/:id', (req, res) => {
+      return res.json({ idade: req.params.id })
+    })'
+
+* // req.body = acessar corpo da requisição (para criar, editar)
+    'app.post('/users/', (req, res) => {
+      return res.json(req.body)
+    })'
 
