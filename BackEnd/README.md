@@ -31,3 +31,13 @@ Comandos e Métodos importantes
       return res.json(req.body)
     })'
 
+## Metodos do Controller
+'module.exports = {
+  index()
+}'
+
+* 'index' // retorna uma listagem
+* 'show' // retorna uma única session
+* 'store' // criar uma session
+* 'update' // alterar uma session
+* 'destroy' // deletar uma session
