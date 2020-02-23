@@ -8,6 +8,7 @@ Comandos e Métodos importantes
 * yarn add express
 * yarn add nodemon
 * yarn add mongoose
+* yarn add multer
 
 ## Métodos
 
