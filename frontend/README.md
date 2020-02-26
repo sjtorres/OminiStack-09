@@ -3,4 +3,4 @@
 Alguns comandos:
 
 * yarn create-react-app + nome da pasta
-* yarn react-router-dom
+* yarn add react-router-dom
