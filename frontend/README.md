@@ -2,4 +2,5 @@
 
 Alguns comandos:
 
-*yarn create-react-app + nome da pasta
+* yarn create-react-app + nome da pasta
+* yarn react-router-dom

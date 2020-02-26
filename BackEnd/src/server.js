@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const routes = require('./routes');
 
 const app = express();
@@ -14,6 +16,7 @@ mongoose.connect('mongodb+srv://oministack:oministack@oministack9-wuril.mongodb.
 // req.params = acessar route params (para add ou delete)
 // req.body = acessar corpo da requisição (para criar, editar)
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
