@@ -10,9 +10,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     const user_id = localStorage.getItem('user');
-    const socket = socketio('http://localhost:3333');
+    const socket = socketio('http://localhost:3333', {
+      query: { user_id }
+    });
 
-    socket.emit('omni', 'Stack');
   }, []);
 
   useEffect(() => {
