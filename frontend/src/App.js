@@ -1,9 +1,10 @@
 import React from 'react';
+
 import './App.css';
 
-import Routes from './routes'
+import logo from './assets/logo.svg';
 
-import logo from './assets/logo.svg'
+import Routes from './routes';
 
 function App() {
   return (

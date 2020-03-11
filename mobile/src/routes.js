@@ -1,8 +1,8 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import Login from './page/Login';
-import List from './page/List';
-import Book from './page/Book';
+import Login from './pages/Login';
+import List from './pages/List';
+import Book from './pages/Book';
 
 const Routes = createAppContainer(
   createSwitchNavigator({

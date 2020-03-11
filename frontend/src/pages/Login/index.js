@@ -10,29 +10,30 @@ export default function Login({ history }) {
     const response = await api.post('/sessions', { email });
 
     const { _id } = response.data;
-    
-    localStorage.setItem('user', _id)
 
-    history.push('/dashboard')
+    localStorage.setItem('user', _id);
+
+    history.push('/dashboard');
   }
+
   return (
-  <>
-    <p>
-      ofereça <strong>spots</strong> para progrmadores e encontre <strong>talentos</strong> para sua empresa!
-    </p>
+    <>
+      <p>
+        Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa
+      </p>
 
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">E-MAIL *</label>
-      <input
-        type="email" 
-        id="email" 
-        placeholder="Seu melhor e-mail"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-      />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">E-MAIL *</label>
+        <input 
+          id="email" 
+          type="email" 
+          placeholder="Seu melhor e-mail"
+          value={email}
+          onChange={event => setEmail(event.target.value)}
+        />
 
-      <button className="btn" type="submit">Cadastrar</button>
-    </form>
-  </>
+        <button className="btn" type="submit">Entrar</button>
+      </form>
+    </>
   )
 }

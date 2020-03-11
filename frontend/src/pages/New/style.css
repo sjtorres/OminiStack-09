@@ -4,7 +4,7 @@ label#thumbnail {
   background-size: cover;
   cursor: pointer;
   height: 160px;
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +17,7 @@ label#thumbnail input {
 label#thumbnail.has-thumbnail {
   border: 0;
 }
+
 label#thumbnail.has-thumbnail img {
-  display: none
+  display: none;
 }

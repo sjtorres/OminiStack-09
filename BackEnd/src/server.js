@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 
 const socketio = require('socket.io');
-const http = require('http')
+const http = require('http');
 
 const routes = require('./routes');
 
@@ -17,25 +17,26 @@ mongoose.connect('mongodb+srv://oministack:oministack@oministack9-wuril.mongodb.
   useUnifiedTopology: true,
 })
 
-const connecteUsers = {};
+const connectedUsers = {};
 
 io.on('connection', socket => {
   const { user_id } = socket.handshake.query;
 
-  connecteUsers[user_id] = socket.id;
-})
+  connectedUsers[user_id] = socket.id;
+});
 
 app.use((req, res, next) => {
   req.io = io;
-  req.connecteUsers = connecteUsers;
+  req.connectedUsers = connectedUsers;
 
   return next();
 })
 
 // GET, POST, PUT, DELETE
-// req.query = Acessar query de params (para filtros)
-// req.params = acessar route params (para add ou delete)
-// req.body = acessar corpo da requisição (para criar, editar)
+
+// req.query = Acessar query params (para filtros)
+// req.params = Acessar route params (para edição, delete)
+// req.body = Acessar corpo da requisição (para criação, edição)
 
 app.use(cors());
 app.use(express.json());

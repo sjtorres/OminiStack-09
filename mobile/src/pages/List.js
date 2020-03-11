@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import socketio from 'socket.io-client';
-import { Alert, SafeAreaView, Image, StyleSheet, AsyncStorage, ScrollView } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, Image, AsyncStorage } from 'react-native';
 
-import SpotList from '../components/SpotList'
+import SpotList from '../components/SpotList';
 
 import logo from '../assets/logo.png';
 
@@ -14,8 +14,9 @@ export default function List() {
       const socket = socketio('http://192.168.1.10:3333', {
         query: { user_id }
       })
-      socket.on('booking.response', booking => {
-        Alert.alert(`Sua reserva em ${booking.spot.company} em ${booking.data} foi ${booking.approved ? 'APROVADA' : 'REJEITADA'}`)
+
+      socket.on('booking_response', booking => {
+        Alert.alert(`Sua reserva em ${booking.spot.company} em ${booking.date} foi ${booking.approved ? 'APROVADA' : 'REJEITADA'}`);
       })
     })
   }, []);
@@ -24,9 +25,9 @@ export default function List() {
     AsyncStorage.getItem('techs').then(storagedTechs => {
       const techsArray = storagedTechs.split(',').map(tech => tech.trim());
 
-      setTechs(techsArray)
+      setTechs(techsArray);
     })
-  }, [])
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,6 +49,6 @@ const styles = StyleSheet.create({
     height: 32,
     resizeMode: "contain",
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 10
   },
-})
+});

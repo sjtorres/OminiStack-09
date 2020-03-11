@@ -1,35 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  View, 
-  KeyboardAvoidingView, 
-  AsyncStorage,
-  Platform, 
-  Image, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  StyleSheet 
-} from 'react-native';
+import { View, AsyncStorage, KeyboardAvoidingView, Platform, Image, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 import api from '../services/api';
+
 import logo from '../assets/logo.png';
 
-export default function Login ({ navigation }) {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
   useEffect(() => {
     AsyncStorage.getItem('user').then(user => {
-      if(user) {
+      if (user) {
         navigation.navigate('List');
       }
     })
-  }, [])
+  }, []);
 
   async function handleSubmit() {
     const response = await api.post('/sessions', {
       email
     })
+
     const { _id } = response.data;
 
     await AsyncStorage.setItem('user', _id);
@@ -37,15 +29,16 @@ export default function Login ({ navigation }) {
 
     navigation.navigate('List');
   }
-  return( 
-  <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding" style={styles.container}>
-    <Image source={logo} />
+
+  return (
+    <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding" style={styles.container}>
+      <Image source={logo} />
 
       <View style={styles.form}>
         <Text style={styles.label}>SEU E-MAIL *</Text>
         <TextInput
           style={styles.input}
-          placeholder="Seu E-mail"
+          placeholder="Seu e-mail"
           placeholderTextColor="#999"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -57,7 +50,7 @@ export default function Login ({ navigation }) {
         <Text style={styles.label}>TECNOLOGIAS *</Text>
         <TextInput
           style={styles.input}
-          placeholder="Tecnologias"
+          placeholder="Tecnologias de interesse"
           placeholderTextColor="#999"
           autoCapitalize="words"
           autoCorrect={false}
@@ -70,7 +63,7 @@ export default function Login ({ navigation }) {
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -89,17 +82,17 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: 'bold',
     color: '#444',
-    marginBottom: 8
+    marginBottom: 8,
   },
 
   input: {
     borderWidth: 1,
-    borderColor: '#444',
+    borderColor: '#ddd',
     paddingHorizontal: 20,
     fontSize: 16,
     color: '#444',
-    marginBottom: 20,
     height: 44,
+    marginBottom: 20,
     borderRadius: 2
   },
 
@@ -108,12 +101,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f05a5b',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 2,
   },
 
   buttonText: {
-    color: '#fff',
+    color: '#FFF',
+    fontWeight: 'bold',
     fontSize: 16,
-    fontWeight: 'bold'
-  }
-})
+  },
+});
